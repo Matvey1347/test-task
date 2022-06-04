@@ -6,24 +6,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent implements OnInit {
-
+  loginForm: any;
   constructor() { }
 
   ngOnInit(): void {
+    this.initForm();
   }
-  loginForm: any = {
-    FullName: '',
-    LastName: '',
-    StreetAddress: '',
-    StreetAddressLine2: '',
-    City: '',
-    StateorProvince:'',
-    PostalorZpCode:'',
-    phone:'',
-    email:'',
-  }
+  initForm(){
+    this.loginForm = {
+      FullName: '',
+      LastName: '',
+      StreetAddress: '',
+      StreetAddressLine2: '',
+      City: '',
+      StateorProvince:'',
+      PostalorZpCode:'',
+      phone:'',
+      email:'',
+    }
+  } 
   printForm() {
     console.log(this.loginForm);
+    this.initForm();
   }
   emailPlaceholderRemove() {
     const email:any = document.getElementsByClassName('form__email')[0]

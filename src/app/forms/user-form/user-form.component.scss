@@ -15,7 +15,9 @@ img{vertical-align: top;}
 h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight:inherit;}
 
 .form {
+   font-family: 'Open Sans', sans-serif;
     &__title {
+       font-weight: 600;
        font-size: 24px;
        margin: 30px 0 10px 0;
        & span {
@@ -55,7 +57,6 @@ h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight:inherit;}
           margin-bottom: 20px;
        }
     }
- 
     &__input {
        font-size: 18px;
        &::-webkit-input-placeholder {
@@ -110,7 +111,6 @@ h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight:inherit;}
           border: 2px solid #737373;
        }
     }
- 
     &__text {
        color: #737373;
        margin-bottom: 20px;
@@ -135,12 +135,13 @@ h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight:inherit;}
        font-size: 18px;
        color: #bcb7b7;
        margin-left: 10px;
-       &:active{
-          color: #000;
+       transition: all 0.4s ease 0s;
+       &:hover{
+         color: #000;
          background-color: rgb(7, 190, 7);
        }
     }
- }
+}
 .ng-valid[required],
 .ng-valid.required,
 .ng-valid:not(form) {

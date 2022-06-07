@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-user-form',
@@ -29,20 +29,18 @@ export class UserFormComponent implements OnInit {
     console.log(this.loginForm);
     this.initForm();
   }
+  @ViewChild("emailInput") emailInput!:ElementRef;
+  @ViewChild("phoneInput") phoneInput!:ElementRef;
   emailPlaceholderRemove() {
-    const email:any = document.getElementsByClassName('form__email')[0]
-    email.placeholder = ""
+    this.emailInput.nativeElement.placeholder = ""
   }
   emailPlaceholderAdd() {
-    const email:any = document.getElementsByClassName('form__email')[0]
-    email.placeholder = 'ex: email@yahoo.com'
+    this.emailInput.nativeElement.placeholder = 'ex: email@yahoo.com'
   }
   phonePlaceholderRemove() {
-    const phone:any = document.getElementsByClassName('form__phone')[0]
-    phone.placeholder = ""
+    this.phoneInput.nativeElement.placeholder = ""
   }
   phonePlaceholderAdd(){
-    const phone:any = document.getElementsByClassName('form__phone')[0]
-    phone.placeholder = '(000) 000-0000'
+    this.phoneInput.nativeElement.placeholder = '(000) 000-0000'
   }
 }

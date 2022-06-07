@@ -64,6 +64,7 @@
    <div class="form__text">Postal / Zp Code</div>
    <h2 class="form__title">Phone Number <span>*</span></h2>
    <input 
+       #phoneInput
        required 
        placeholder="(000) 000-0000" 
        class="form__phone" 
@@ -79,6 +80,7 @@
        type="email"
        name="email"
        email
+       #emailInput
        [(ngModel)]="loginForm.email"
        (focus)="emailPlaceholderRemove()"
        (blur)="emailPlaceholderAdd()">

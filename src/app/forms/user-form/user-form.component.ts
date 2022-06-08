@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,24 +6,31 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss']
 })
-export class UserFormComponent implements OnInit {
-  loginForm!: FormGroup ;
+export class UserFormComponent {
+  @ViewChild("emailInput") emailInput!: ElementRef;
+  @ViewChild("phoneInput") phoneInput!: ElementRef;
+
+  loginForm!: FormGroup;
+  
   constructor(private fb: FormBuilder) {
     this.createForm();
   }
+
   private createForm() {
-    this.loginForm  = this.fb.group({
-      FullName: [null],
-      LastName: [null],
-      StreetAddress: [null],
-      StreetAddressLine2: [null],
-      City: [null],
-      StateorProvince: [null],
-      PostalorZpCode: [null],
-      Phone: [null,Validators.maxLength(10)],
-      Email: [null,Validators.email],
+    const fb = this.fb;
+    this.loginForm  = fb.group({
+      fullName: fb.control(null, [Validators.required]),
+      lastName: fb.control(null, [Validators.required]),
+      streetAddress: fb.control(null, [Validators.required]),
+      streetAddressLine2: fb.control(null, [Validators.required]),
+      city: fb.control(null, [Validators.required]),
+      stateorProvince: fb.control(null, [Validators.required]),
+      postalorZpCode: fb.control(null, [Validators.required]),
+      phone: fb.control(null, [Validators.required, Validators.maxLength(10), Validators.pattern("^[0-9]{3,45}$")]),
+      email: fb.control(null, [Validators.required, Validators.email])
     })
   }
+
   onSubmit() {
     const controls = this.loginForm.controls;
     if(this.loginForm.invalid) {
@@ -33,19 +40,19 @@ export class UserFormComponent implements OnInit {
     console.log(this.loginForm.value);
     this.createForm();
   }
-  ngOnInit(): void {
-  }
-  @ViewChild("emailInput") emailInput!:ElementRef;
-  @ViewChild("phoneInput") phoneInput!:ElementRef;
+  
   emailPlaceholderRemove() {
     this.emailInput.nativeElement.placeholder = ""
   }
+
   emailPlaceholderAdd() {
     this.emailInput.nativeElement.placeholder = 'ex: email@yahoo.com'
   }
+
   phonePlaceholderRemove() {
     this.phoneInput.nativeElement.placeholder = ""
   }
+
   phonePlaceholderAdd(){
     this.phoneInput.nativeElement.placeholder = '(000) 000-0000'
   }

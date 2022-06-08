@@ -1,23 +1,19 @@
-<form (submit)="onSubmit()" [formGroup]="loginForm" class="form" id="form" name="form" action="#">
+<form [formGroup]="loginForm" (submit)="onSubmit()" class="form" id="form" name="form" >
    <h2 class="form__title">Full Name <span>*</span></h2>
    <div class="form__items">
      <div class="form__item">
        <input
            class="form__item_input"
-           required 
            type="text"
-           name="FullName"
-           formControlName="FullName"
+           formControlName="fullName"
            >
        <div class="form__item_text">Full Name</div>
      </div>
      <div class="form__item">
        <input 
            class="form__item_input" 
-           required 
            type="text"
-           name="LastName"
-           formControlName="LastName"
+           formControlName="lastName"
            >
        <div class="form__item_text">Last Name</div>
      </div>
@@ -25,71 +21,59 @@
    <h2 class="form__title">Address <span>*</span></h2>
    <input 
        class="form__input" 
-       required 
        type="text"
-       name="StreetAddress"
-       formControlName="StreetAddress"
+       formControlName="streetAddress"
        >
    <div class="form__text">Street Address</div>
    <input 
        class="form__input" 
-       required 
        type="text"
-       name="StreetAddressLine2"
-       formControlName="StreetAddressLine2"
+       formControlName="streetAddressLine2"
        >
    <div class="form__text">Street Address Line 2</div>
    <div class="form__items">
      <div class="form__item">
        <input 
            class="form__item_input" 
-           required 
            type="text"
-           name="City"
-           formControlName="City"
+           formControlName="city"
            >
        <div class="form__item_text">City</div>
      </div>
      <div class="form__item">
        <input 
            class="form__item_input" 
-           required 
            type="text"
-           name="StateorProvince"
-           formControlName="StateorProvince"
+           formControlName="stateorProvince"
            >
        <div class="form__item_text">State / Province</div>
      </div>
    </div>
    <input 
        class="form__input" 
-       required 
        type="text"
-       name="PostalorZpCode"
-       formControlName="PostalorZpCode"
+       formControlName="postalorZpCode"
        >
    <div class="form__text">Postal / Zp Code</div>
    <h2 class="form__title">Phone Number <span>*</span></h2>
    <input 
        #phoneInput
-       required 
        placeholder="(000) 000-0000" 
        class="form__phone" 
        type="tel"
-       name="Phone"
+       pattern="^[0-9]{3,45}$"
        (focus)="phonePlaceholderRemove()"
        (blur)="phonePlaceholderAdd()"
-       formControlName="Phone">
+       formControlName="phone">
    <h2 class="form__title">E-mail</h2>
    <input 
        placeholder="ex: email@yahoo.com"  
        class="form__email" 
        type="email"
-       name="Email"
        #emailInput
        (focus)="emailPlaceholderRemove()"
        (blur)="emailPlaceholderAdd()"
-       formControlName="Email">
+       formControlName="email">
    <div class="form__text">example@example.com</div>
    <div class="form__line"></div>
      <button 

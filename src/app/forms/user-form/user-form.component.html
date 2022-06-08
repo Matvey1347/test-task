@@ -1,4 +1,4 @@
-<form #userForm = "ngForm"  class="form" id="form" name="form" action="#">
+<form (submit)="onSubmit()" [formGroup]="loginForm" class="form" id="form" name="form" action="#">
    <h2 class="form__title">Full Name <span>*</span></h2>
    <div class="form__items">
      <div class="form__item">
@@ -7,7 +7,8 @@
            required 
            type="text"
            name="FullName"
-           [(ngModel)]="loginForm.FullName">
+           formControlName="FullName"
+           >
        <div class="form__item_text">Full Name</div>
      </div>
      <div class="form__item">
@@ -16,7 +17,8 @@
            required 
            type="text"
            name="LastName"
-           [(ngModel)]="loginForm.LastName">
+           formControlName="LastName"
+           >
        <div class="form__item_text">Last Name</div>
      </div>
    </div>
@@ -26,14 +28,16 @@
        required 
        type="text"
        name="StreetAddress"
-       [(ngModel)]="loginForm.StreetAddress">
+       formControlName="StreetAddress"
+       >
    <div class="form__text">Street Address</div>
    <input 
        class="form__input" 
        required 
        type="text"
        name="StreetAddressLine2"
-       [(ngModel)]="loginForm.StreetAddressLine2">
+       formControlName="StreetAddressLine2"
+       >
    <div class="form__text">Street Address Line 2</div>
    <div class="form__items">
      <div class="form__item">
@@ -42,7 +46,8 @@
            required 
            type="text"
            name="City"
-           [(ngModel)]="loginForm.City">
+           formControlName="City"
+           >
        <div class="form__item_text">City</div>
      </div>
      <div class="form__item">
@@ -51,7 +56,8 @@
            required 
            type="text"
            name="StateorProvince"
-           [(ngModel)]="loginForm.StateorProvince">
+           formControlName="StateorProvince"
+           >
        <div class="form__item_text">State / Province</div>
      </div>
    </div>
@@ -60,7 +66,8 @@
        required 
        type="text"
        name="PostalorZpCode"
-       [(ngModel)]="loginForm.PostalorZpCode">
+       formControlName="PostalorZpCode"
+       >
    <div class="form__text">Postal / Zp Code</div>
    <h2 class="form__title">Phone Number <span>*</span></h2>
    <input 
@@ -69,28 +76,26 @@
        placeholder="(000) 000-0000" 
        class="form__phone" 
        type="tel"
-       name="phone"
-       [(ngModel)]="loginForm.phone"
+       name="Phone"
        (focus)="phonePlaceholderRemove()"
-       (blur)="phonePlaceholderAdd()">
+       (blur)="phonePlaceholderAdd()"
+       formControlName="Phone">
    <h2 class="form__title">E-mail</h2>
    <input 
        placeholder="ex: email@yahoo.com"  
        class="form__email" 
        type="email"
-       name="email"
-       email
+       name="Email"
        #emailInput
-       [(ngModel)]="loginForm.email"
        (focus)="emailPlaceholderRemove()"
-       (blur)="emailPlaceholderAdd()">
+       (blur)="emailPlaceholderAdd()"
+       formControlName="Email">
    <div class="form__text">example@example.com</div>
    <div class="form__line"></div>
      <button 
        type="submit" 
        class="form__button"
-       (click)="printForm()"
-       [disabled]="!userForm.form.valid">
+       >
        Submit
      </button>
 </form>
